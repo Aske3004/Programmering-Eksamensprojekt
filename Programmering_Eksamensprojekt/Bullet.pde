@@ -20,18 +20,12 @@ class Bullet{
   }
   
   void draw(){
-    
     pushMatrix();
     translate(position.x,position.y);
     rotate(radians(angle));
     fill(255,0,0);
     strokeWeight(5);
-    circle(0,-60,5);
-        
-    
-    
+    circle(0,-75,5);
     popMatrix();
-    
   }
-  
 }

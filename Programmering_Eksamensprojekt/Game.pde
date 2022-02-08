@@ -35,12 +35,7 @@ class Game{
   void draw(){
     controls();
   }
-  
 }
-
-
-
-
 
 void keyPressed(){
 if (key == 'w') {

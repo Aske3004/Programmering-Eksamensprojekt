@@ -7,10 +7,7 @@ class Player{
   Player(){
     position = new PVector(width/2,height/2);
     velocity = new PVector(0,0);
-    
-    
   }
-  
   
   void update(){
     velocity.x = (float)Math.sin(radians(playerAngle));
@@ -18,26 +15,19 @@ class Player{
     velocity.x*=speed;
     velocity.y*=speed;
     position.add(velocity);
-    
-    
-    
-    
     for (int i = 0; i < bullets.size(); i++) {
       bullets.get(i).update();
     }
-    
   }
   
   void draw(){
     for (int i = 0; i < bullets.size(); i++) {
-       Bullet k = bullets.get(i);
-      if (k.life > 0)
-        k.draw();
+       Bullet n = bullets.get(i);
+      if (n.life > 0)
+        n.draw();
       else
         bullets.remove(i);
     }
-    
-    
     pushMatrix();
     translate(position.x,position.y);
     rotate(radians(playerAngle));
@@ -50,9 +40,6 @@ class Player{
     fill(127);
     strokeWeight(2);
     rect(-4,-54,8,-20);
-        
-    
-    
     popMatrix();
   }
 }
