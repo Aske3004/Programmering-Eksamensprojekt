@@ -8,7 +8,6 @@ class Bullet{
   Bullet(PVector pos,float angle){
     position=pos.copy();
     this.angle=angle;
-    println(position,angle);
   }
   
   void update(){

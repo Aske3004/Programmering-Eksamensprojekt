@@ -3,9 +3,11 @@ int value=255;
 
 class Game{
   Player thePlayer;
+  ArrayList<Monster> monsters = new ArrayList<Monster>();
   
   Game(){
     thePlayer = new Player();
+    monsters.add(new Monster());
   }
   
   void update(){
@@ -34,6 +36,13 @@ class Game{
   
   void draw(){
     controls();
+    for (int i = 0; i < monsters.size(); i++) {
+       Monster x = monsters.get(i);
+      if (x.life > 0)
+        x.draw();
+      else
+        monsters.remove(i);
+    }
   }
 }
 
