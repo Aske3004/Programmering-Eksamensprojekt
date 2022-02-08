@@ -1,5 +1,5 @@
-boolean w,a,s,d,turnLeft,turnRight,shoot;
-int value=0;
+boolean w,a,s,d,shoot;
+int value=255;
 
 class Game{
   Player thePlayer;
@@ -10,29 +10,25 @@ class Game{
   
   void update(){
     thePlayer.update();
+    thePlayer.draw();
   }
   
   void controls(){
     if(w){
-      
+      thePlayer.speed=2;
     }
     if(a){
-      
+      thePlayer.playerAngle-=2;
     }
     if(s){
-      
+      thePlayer.speed=-2;
     }
     if(d){
-      
+      thePlayer.playerAngle+=2;
     }
-    if(shoot){
-      
-    }
-    if(turnLeft){
-      
-    }
-    if(turnRight){
-      
+    if(value==0){
+      thePlayer.bullets.add(new Bullet(thePlayer.position,thePlayer.playerAngle));
+      value=255;
     }
   }
   
@@ -63,31 +59,21 @@ if (key == 'w') {
     d = true;
     a = false;
   }
-  if (keyCode == LEFT) {
-    turnLeft = true;
-    turnRight = false;
-  }
-  if (keyCode == RIGHT) {
-    turnRight = true;
-    turnLeft = false;
-  }
   if (key == ' ')
   {
     shoot=true;
+    value=255;
   }
 }
 
 void keyReleased(){
-  if (value == 0) {
-    value = 255;
-  } else {
-    value = 0;
-  }
   if (key == 'w') {
     w = false;
+    theGame.thePlayer.speed=0;
   }
   if (key == 's') {
     s = false;
+    theGame.thePlayer.speed=0;
   }  
   if (key == 'a') {
     a = false;
@@ -95,13 +81,8 @@ void keyReleased(){
   if (key == 'd') {
     d = false;
   }
-  if (keyCode == LEFT) {
-    turnLeft = false;
-  }
-  if (keyCode == RIGHT) {
-    turnRight = false;
-  }
   if (key == ' '){
     shoot=false;
+    value=0;
   }
 }

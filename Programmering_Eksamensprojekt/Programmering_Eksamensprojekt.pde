@@ -3,6 +3,7 @@ Game theGame;
 
 void setup(){
   size(1500,900);
+  frameRate(144);
   theGame = new Game();
 }
 
