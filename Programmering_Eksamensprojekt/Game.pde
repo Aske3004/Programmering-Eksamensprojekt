@@ -7,7 +7,10 @@ class Game{
   
   Game(){
     thePlayer = new Player();
-    monsters.add(new Monster());
+    monsters.add(new Monster(1));
+    monsters.add(new Monster(0));
+    monsters.add(new Monster(2));
+    monsters.add(new Monster(int(random(-1,3))));
   }
   
   void update(){

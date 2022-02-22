@@ -32,14 +32,14 @@ class Player{
     translate(position.x,position.y);
     rotate(radians(playerAngle));
     fill(128,64,0);
+    strokeWeight(7);
+    line(23,-5,0,-60);
+    line(-23,-5,0,-60);
     strokeWeight(5);
     circle(0,0,50);
-    fill(0);
-    line(25,-5,0,-60);
-    line(-25,-5,0,-60);
     fill(127);
     strokeWeight(2);
-    rect(-4,-54,8,-20);
+    rect(-6,-54,12,-25);
     popMatrix();
   }
 }
