@@ -12,7 +12,13 @@ class Game{
   
   void update(){
     thePlayer.update();
-    thePlayer.draw();
+    for (int i = 0; i < monsters.size(); i++) {
+       Monster x = monsters.get(i);
+      if (x.life > 0)
+        x.update();
+      else
+        monsters.remove(i);
+    }
   }
   
   void controls(){
@@ -35,6 +41,7 @@ class Game{
   }
   
   void draw(){
+    thePlayer.draw();
     controls();
     for (int i = 0; i < monsters.size(); i++) {
        Monster x = monsters.get(i);

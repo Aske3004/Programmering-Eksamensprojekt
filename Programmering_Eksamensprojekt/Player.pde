@@ -5,7 +5,7 @@ class Player{
   ArrayList<Bullet> bullets = new ArrayList<Bullet>();
   
   Player(){
-    position = new PVector(width/2,height/2);
+    position = new PVector(0,0);
     velocity = new PVector(0,0);
   }
   
