@@ -1,8 +1,8 @@
 Man controller
-X	X position	3	SLIDER	X-akse	0	1.0	0.0
-Y	Y position	3	SLIDER	Y-akse	0	1.0	0.0
-Z-rotation	Rotation	3	SLIDER	Z-rotation	0	1.0	0.0
-Z-akse	Rotation	3	SLIDER	Z-akse	0	1.0	0.0
-X-key	Enter	1	BUTTON	Knap 1	0	0.0	0.0
-O-key	Return	1	BUTTON	Knap 2	0	0.0	0.0
-R2	Shoot	3	SLIDER	Y-rotation	0	1.0	0.0
+X	X position	3	SLIDER	x	0	1.0	0.0
+Y	Y position	3	SLIDER	y	0	1.0	0.0
+Z-rotation	Rotation	3	SLIDER	rz	0	1.0	0.0
+Z-akse	Rotation	3	SLIDER	z	0	1.0	0.0
+X-key	Enter	1	BUTTON	1	0	0.0	0.0
+O-key	Return	1	BUTTON	2	0	0.0	0.0
+R2	Shoot	3	SLIDER	ry	0	1.0	0.0
