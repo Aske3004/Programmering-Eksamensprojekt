@@ -1,23 +1,41 @@
 class Player{
   PVector position, velocity;
-  float playerAngle = 180;
-  float speed=0;
+  float angle;
   ArrayList<Bullet> bullets = new ArrayList<Bullet>();
+  float newX=width/2,newY=height/2;
+  float theDirectionx,theDirectiony;
   
   Player(){
-    position = new PVector(0,0);
+    position = new PVector(width/2,height/2);
     velocity = new PVector(0,0);
   }
   
   void update(){
-    velocity.x = (float)Math.sin(radians(playerAngle));
-    velocity.y = -(float)Math.cos(radians(playerAngle));
-    velocity.x*=speed;
-    velocity.y*=speed;
-    position.add(velocity);
+    
     for (int i = 0; i < bullets.size(); i++) {
       bullets.get(i).update();
     }
+    
+    //Make the player turn if the stick is out of the deadzone
+    if(direction.x<-0.2||direction.x>0.2||direction.y>0.4||direction.y<-0.4){
+      theDirectionx=direction.x;
+    }
+    if(direction.y<-0.2||direction.y>0.2||direction.x>0.4||direction.x<-0.4){
+      theDirectiony=direction.y;
+    }
+    angle = atan2(position.y+theDirectiony-position.y, position.x+theDirectionx-position.x);
+    
+    //Make the player move if the stick is out of the deadzone
+    if(movement.x<-0.2||movement.x>0.2){
+    newX =  position.x+px*2;
+    }
+    else movement.x=0;
+    if(movement.y<-0.2||movement.y>0.2){
+    newY =  position.y+py*2;
+    }
+    else movement.y=0;
+    position.set(newX, newY, 0.);
+  
   }
   
   void draw(){
@@ -30,7 +48,7 @@ class Player{
     }
     pushMatrix();
     translate(position.x,position.y);
-    rotate(radians(playerAngle));
+    rotate(angle-4.7);
     fill(128,64,0);
     strokeWeight(7);
     line(23,-5,0,-60);

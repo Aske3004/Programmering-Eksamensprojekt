@@ -4,7 +4,6 @@ class Bullet{
   float angle;
   float life = 1;
   
-  
   Bullet(PVector pos,float angle){
     position=pos.copy();
     this.angle=angle;
