@@ -35,7 +35,7 @@ void getUserInput(){
   R2 = map(stick.getSlider("Shoot").getValue(), -1, 1, 0, 1);
   //println(R2);
   println(pxRotation);
-  direction = new PVector(pyRotation,pxRotation);
+  direction = new PVector(pxRotation,pyRotation);
   movement = new PVector(px,py);
 }
 
