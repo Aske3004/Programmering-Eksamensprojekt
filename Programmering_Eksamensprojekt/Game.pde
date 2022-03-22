@@ -1,5 +1,5 @@
 
-
+int page = 1;
 boolean w,a,s,d,shoot;
 int value=255;
 
@@ -15,12 +15,17 @@ class Game{
     monsters.add(new Monster(1));
     monsters.add(new Monster(0));
     monsters.add(new Monster(2));
-    monsters.add(new Monster(int(random(-1,3))));
+    //monsters.add(new Monster(int(random(-1,3))));
     
     
   }
   
   void update(){
+    if(page==0){
+      
+    }
+    
+    if(page==1){
     thePlayer.update();
     for (int i = 0; i < monsters.size(); i++) {
        Monster x = monsters.get(i);
@@ -29,6 +34,7 @@ class Game{
       else
         monsters.remove(i);
     }
+  }
   }
   
   void controls(){
@@ -39,6 +45,16 @@ class Game{
   }
   
   void draw(){
+    if(page==0){
+      textSize(100);
+      fill(0);
+      textAlign(CENTER);
+      text("ZombMan",width/2,150);
+    }
+    
+    
+    
+    if(page==1){
     thePlayer.draw();
     controls();
     for (int i = 0; i < monsters.size(); i++) {
@@ -48,6 +64,7 @@ class Game{
       else
         monsters.remove(i);
     }
+  }
   }
 }
 

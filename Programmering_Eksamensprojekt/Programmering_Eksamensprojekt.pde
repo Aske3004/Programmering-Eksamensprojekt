@@ -13,8 +13,9 @@ void setup(){
   control = ControlIO.getInstance(this);
   stick = control.filter(GCP.STICK).getMatchedDevice("TheUser");
   stick.getButton("X-key").plug(this, "confirm", ControlIO.ON_RELEASE);
+  stick.getButton("O-key").plug(this, "goBack", ControlIO.ON_RELEASE);
   
-  
+  //Background color = 165
   
   
   theGame = new Game();
@@ -34,11 +35,15 @@ void getUserInput(){
   pyRotation = map(stick.getSlider("RotationY").getValue(), -1, 1, 0, 2)-1;
   R2 = map(stick.getSlider("Shoot").getValue(), -1, 1, 0, 1);
   //println(R2);
-  println(pxRotation);
+  //println(pxRotation);
   direction = new PVector(pxRotation,pyRotation);
   movement = new PVector(px,py);
 }
 
 void confirm(){
-  println("hejsa");
+  println("confirm");
+}
+
+void goBack(){
+  println("return");
 }
