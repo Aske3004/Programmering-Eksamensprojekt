@@ -1,0 +1,8 @@
+TheUser
+X position	L3 x-akse	3	SLIDER	X-akse	0	1.0	0.0
+Y position	L3 y-akse	3	SLIDER	Y-akse	0	1.0	0.0
+RotationX	R3 x-akse	3	SLIDER	Z-akse	0	1.0	0.0
+RotationY	R3 y-akse	3	SLIDER	Z-rotation	0	1.0	0.0
+Shoot	R2 trigger	3	SLIDER	Y-rotation	0	1.0	0.0
+X-key	X-key	1	BUTTON	Knap 1	0	0.0	0.0
+O-key	O-key	1	BUTTON	Knap 2	0	0.0	0.0
