@@ -2,6 +2,7 @@ class Monster {
   PVector position;
   float life, speed, angle;
   String type;
+  float size;
 
   Monster(int typeOfMonster) {
     position = new PVector(random(0, width), random(0, height));
@@ -9,16 +10,19 @@ class Monster {
       type = "normalZombie";
       speed = 0.8;
       life = 3;
+      size=50;
     }
     if (typeOfMonster==1) {
       type = "bigZombie";
       speed = 0.6;
       life = 15;
+      size=70;
     }
     if (typeOfMonster==2) {
       type="fastZombie";
       speed = 1.4;
       life=1;
+      size=40;
     }
   }
 
@@ -40,7 +44,7 @@ class Monster {
       line(24, 0, 24, -30);
       line(-24, 0, -24, -30);
       strokeWeight(5);
-      circle(0, 0, 50);
+      circle(0, 0, size);
       popMatrix();
     }
 
@@ -55,7 +59,7 @@ class Monster {
       rect(-25, 0, -20, -50);
       circle(35, 0, 20);
       circle(-35, 0, 20);
-      circle(0, 0, 70);
+      circle(0, 0, size);
       popMatrix();
     }
 
@@ -68,7 +72,7 @@ class Monster {
       line(20, 0, 20, -30);
       line(-20, 0, -20, -30);
       strokeWeight(5);
-      circle(0, 0, 40);
+      circle(0, 0, size);
       popMatrix();
     }
   }

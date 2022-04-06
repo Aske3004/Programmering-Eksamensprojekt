@@ -3,13 +3,21 @@ import org.gamecontrolplus.*;
 import org.gamecontrolplus.gui.*;
 
 Game theGame;
+Cursor theCursor;
 
 float px,py,pxRotation,pyRotation,R2;
 PVector direction,movement;
+ArrayList<Bullet> bullets = new ArrayList();
+PImage mainScreen,controlsScreen;
 
 void setup(){
   size(1500,900);
   frameRate(144);
+  
+  imageMode(CENTER);
+  mainScreen = loadImage("Design programmerings projekt.png");
+  controlsScreen = loadImage("ControlsScreen.png");
+  background(mainScreen);
   control = ControlIO.getInstance(this);
   stick = control.filter(GCP.STICK).getMatchedDevice("TheUser");
   stick.getButton("X-key").plug(this, "confirm", ControlIO.ON_RELEASE);
@@ -19,13 +27,16 @@ void setup(){
   
   
   theGame = new Game();
+  theCursor = new Cursor();
 }
 
 void draw(){
-  background(255);
+  //background(255);
   getUserInput();
+  
   theGame.update();
   theGame.draw();
+  
 }
 
 void getUserInput(){
@@ -41,9 +52,12 @@ void getUserInput(){
 }
 
 void confirm(){
-  println("confirm");
+  if(page==0){
+      controlsButton.update();
+      startGameButton.update();
+  }
 }
 
 void goBack(){
-  println("return");
+  if(page==2)page=0;
 }
