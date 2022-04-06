@@ -3,6 +3,7 @@ class Bullet{
   PVector velocity = new PVector(0,0);
   float angle;
   float life = 1;
+  int bulletDamage=1;
   boolean hasBounced=false;
   
   Bullet(PVector pos,float angle){
@@ -15,11 +16,14 @@ class Bullet{
   }
   
   void update(){
-    
     position.add(velocity);
+    
+    if(remainingDrawsWithGoldenGun<0)bulletDamage=1;
+    else bulletDamage=2;
+    
   }
   
-  void draw(){
+  void render(){
     pushMatrix();
     translate(position.x,position.y);
     rotate(angle);

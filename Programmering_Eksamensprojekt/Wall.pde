@@ -7,7 +7,7 @@ class Wall{
     position=position_;
   }
   
-  void draw(){
+  void render(){
     fill(178,104,0);
     pushMatrix();
     strokeWeight(5);

@@ -1,11 +1,24 @@
 class Monster {
-  PVector position;
+  PVector position = new PVector();
   float life, speed, angle;
   String type;
   float size;
 
   Monster(int typeOfMonster) {
-    position = new PVector(random(0, width), random(0, height));
+    int chooseHold = int(random(-1,2));
+    int chooseSign = int(random(-1,2));
+    
+    if(chooseHold==0){
+      if(chooseSign==0)position.x=-30;
+      else position.x=width+30;
+      position.y=random(-30,height+30);
+    }
+    else{
+      if(chooseSign==0)position.y=-30;
+      else position.y=height+30;
+      position.x=random(-30,width+30);
+    }
+    
     if (typeOfMonster==0) {
       type = "normalZombie";
       speed = 0.8;
@@ -27,13 +40,13 @@ class Monster {
   }
 
   void update() {   
-    angle = atan2(theGame.thePlayer.position.y-position.y, theGame.thePlayer.position.x-position.x);
+    angle = atan2(thePlayer.position.y-position.y, thePlayer.position.x-position.x);
     float newX = cos(angle) * speed + position.x;
     float newY = sin(angle) * speed + position.y;
     position.set(newX, newY, 0.);
   }
 
-  void draw() {
+  void render() {
     //Normal zombie drawing
     if (type=="normalZombie") {
       pushMatrix();
@@ -69,6 +82,7 @@ class Monster {
       translate(position.x, position.y);
       rotate(angle-4.7);
       fill(44, 255, 86);
+      strokeWeight(5);
       line(20, 0, 20, -30);
       line(-20, 0, -20, -30);
       strokeWeight(5);

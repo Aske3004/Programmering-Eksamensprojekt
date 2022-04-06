@@ -29,7 +29,7 @@ class Cursor{
     if(position.x<0)position.x=0;
   }
   
-  void draw(){
+  void render(){
     image(cursorPhoto,position.x,position.y);
     circle(position.x,position.y,2);
   }

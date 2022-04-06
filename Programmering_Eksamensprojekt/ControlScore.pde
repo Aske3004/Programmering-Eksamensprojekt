@@ -31,7 +31,7 @@ class ControlScore{
     return currentScore;
   }
   
-  void draw(){
+  void render(){
     textSize(30);
     fill(255);
     text("Nuværende score: "+int(currentScore), 15, 90);

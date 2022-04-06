@@ -1,9 +1,6 @@
-
-
 class Player{
   PVector position, velocity;
   float angle;
-  
   float newX,newY;
   float theDirectionx,theDirectiony;
   float shootingCooldown=60;
@@ -11,12 +8,12 @@ class Player{
   float diameter=50;
   int life =5;
   
-  int drawsSinceLastHit=144;
+  int drawsSinceLastHit=72;
   
   
   Player(){
     position = new PVector(width/2,height/2);
-    newX=width/2-100;
+    newX=width/2;
     newY=height/2;
     velocity = new PVector(0,0);
   }
@@ -52,7 +49,8 @@ class Player{
     if(position.x>width)position.x=width;
     if(position.x<0)position.x=0;
     
-    
+    if(remainingDrawsWithFastFire<0)shootingCooldown=60;
+    else shootingCooldown = 30;
     
     if(R2>0.5&&drawsSinceLastShot>shootingCooldown){
       Boolean isInsideWall = false;
@@ -71,11 +69,12 @@ class Player{
     drawsSinceLastHit++;
   }
   
-  void draw(){
+  void render(){
     pushMatrix();
     translate(position.x,position.y);
     rotate(angle-4.7);
-    fill(128,64,0);
+    if(drawsSinceLastHit>72)fill(128,64,0);
+    else fill(200,64,0);
     strokeWeight(7);
     line(23,-5,0,-60);
     line(-23,-5,0,-60);
@@ -85,10 +84,5 @@ class Player{
     strokeWeight(2);
     rect(-6,-54,12,-25);
     popMatrix();
-    
-    
-    
-    
-    
   }
 }
