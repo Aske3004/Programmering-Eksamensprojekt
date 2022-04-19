@@ -14,14 +14,16 @@ class Button {
     if (cursorPressX && cursorPressY) {
       if (goToPage==1) {
         controlScore = new ControlScore();
+        killCounter=0;
         thePlayer = new Player();
+        drawsUntilNextZombieSpawn=720;
         countTheAmountOfFrames=0;
         thePlayer.life=5;
         monsters.add(new Monster(0));
         monsters.add(new Monster(0));
-        monsters.add(new Monster(1));
-        monsters.add(new Monster(2));
-        monsters.add(new Monster(2));
+        monsters.add(new Monster(5));
+        monsters.add(new Monster(9));
+        monsters.add(new Monster(9));
         
         
         //for (int i = 0; i<5; i++) {

@@ -19,6 +19,9 @@ float lastRoundScore;
 
 int countTheAmountOfFrames;
 int drawsSinceLastPowerup;
+int drawsUntilNextZombieSpawn=720;
+int currentZombieDrawCount;
+int killCounter;
 
 class Game {
 
@@ -26,21 +29,8 @@ class Game {
 
   Game() {
     controlScore = new ControlScore();
-    //thePlayer = new Player();
-    //Initial monsters
-    //for(int i = 0; i<5;i++){
-    //  monsters.add(new Monster(int(random(-1,3))));
-    //}
-    //for(int i = 0; i<5;i++){
-    //  powerups.add(new Powerup(int(random(-1,3))));
-    //}
     controlsButton = new Button(new PVector(750, 521), new PVector(364, 141), 2);
     startGameButton = new Button(new PVector(750, 706), new PVector(364, 141), 1);
-
-    //controlsButton = new Button(new PVector(568,450),new PVector(364,141),2);
-    //startGameButton = new Button(new PVector(568,635),new PVector(364,141),1);
-    //monsters.add(new Monster(int(random(-1,3))));
-
 
     walls.add(new Wall(new PVector(206, 184), 35*2));
     walls.add(new Wall(new PVector(300, 526), 70*2));
@@ -54,32 +44,50 @@ class Game {
   }
 
   void update() {
+    //STARTSCREEN
     if (page==0) {
-      //MAINSCREENPAGE
       theCursor.update();
     }
 
+    //GAMEPAGE
     if (page==1) {
-      //GAMEPAGE
-      if(drawsSinceLastPowerup==1440){
+      if (drawsSinceLastPowerup>=1008&&powerups.size()<3) {
         powerups.add(new Powerup(int(random(-1, 3))));
         drawsSinceLastPowerup=0;
       }
+      if(currentZombieDrawCount>=drawsUntilNextZombieSpawn){
+        if(monsters.size()<30){
+          monsters.add(new Monster(int(random(-1, 10))));
+        monsters.add(new Monster(int(random(-1, 10))));
+        }
+        else{
+        monsters.remove(0);
+        monsters.add(new Monster(int(random(-1, 10))));
+      }
+        
+        if(drawsUntilNextZombieSpawn>144)drawsUntilNextZombieSpawn-=40;
+        currentZombieDrawCount=0;
+      }
+      
+      
       collisionDetection();
       thePlayer.update();
       for (int i = 0; i < monsters.size(); i++) {
         Monster x = monsters.get(i);
         if (x.life > 0)
           x.update();
-        else
+        else{
           monsters.remove(i);
+          killCounter++;
+          println(killCounter);
+        }
       }
       controlScore.update();
       remainingDrawsWithFastFire--;
       remainingDrawsWithGoldenGun--;
       countTheAmountOfFrames++;
       drawsSinceLastPowerup++;
-      println(countTheAmountOfFrames);
+      currentZombieDrawCount++;
       if (thePlayer.life==0) {
         lastRoundScore=controlScore.currentScore;
         page=3;
@@ -130,8 +138,7 @@ class Game {
         Monster x = monsters.get(i);
         if (x.life > 0)
           x.render();
-        else
-          monsters.remove(i);
+        else monsters.remove(i);
       }
       for (int i = 0; i < powerups.size(); i++) {
         Powerup p = powerups.get(i);
@@ -147,6 +154,7 @@ class Game {
       controlScore.render();
       textAlign(CENTER);
       text("Dine liv: "+thePlayer.life, width/2, height-50);
+      text("Zombie drab: "+killCounter,width-200,50);
       textAlign(CORNER);
     }
 

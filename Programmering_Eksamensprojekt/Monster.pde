@@ -19,23 +19,25 @@ class Monster {
       position.x=random(-30,width+30);
     }
     
-    if (typeOfMonster==0) {
+    if (typeOfMonster==0||typeOfMonster==2||typeOfMonster==3||typeOfMonster==4) {
       type = "normalZombie";
       speed = 0.8;
       life = 3;
       size=50;
     }
-    if (typeOfMonster==1) {
+    if (typeOfMonster==5||typeOfMonster==6) {
       type = "bigZombie";
       speed = 0.6;
       life = 15;
       size=70;
     }
-    if (typeOfMonster==2) {
+    if (typeOfMonster==7||typeOfMonster==8||typeOfMonster==9||typeOfMonster==1) {
       type="fastZombie";
-      speed = 1.4;
+      speed = 3;
+      //speed = 1.4;
       life=1;
-      size=40;
+      size=50;
+      //size=40;
     }
   }
 
