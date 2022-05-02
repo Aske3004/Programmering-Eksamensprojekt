@@ -1,5 +1,5 @@
 class Cursor{
-  PVector position,velocity;
+  PVector position;
   float newX,newY;
   PImage cursorPhoto;
   
@@ -8,7 +8,6 @@ class Cursor{
     position = new PVector(width/2,height/2);
     newX=width/2;
     newY=height/2;
-    velocity = new PVector(0,0);
   }
   
   void update(){    

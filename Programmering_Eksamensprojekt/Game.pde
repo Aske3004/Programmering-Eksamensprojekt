@@ -1,4 +1,3 @@
-
 int page = 0;
 boolean w, a, s, d, shoot;
 int value=255;
