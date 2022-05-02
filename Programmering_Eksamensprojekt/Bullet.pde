@@ -1,12 +1,12 @@
-class Bullet{
+class Bullet {
   PVector position;
-  PVector velocity = new PVector(0,0);
+  PVector velocity = new PVector(0, 0);
   float angle;
   float life = 1;
   int bulletDamage=1;
   boolean hasBounced=false;
-  
-  Bullet(PVector pos,float angle){
+
+  Bullet(PVector pos, float angle) {
     position=pos.copy();
     this.angle=angle;
     velocity.x = (float)Math.cos(angle);
@@ -14,22 +14,20 @@ class Bullet{
     velocity.x*=3;
     velocity.y*=3;
   }
-  
-  void update(){
+
+  void update() {
     position.add(velocity);
-    
-    if(remainingDrawsWithGoldenGun<0)bulletDamage=1;
+    if (remainingDrawsWithGoldenGun<0)bulletDamage=1;
     else bulletDamage=2;
-    
   }
-  
-  void render(){
+
+  void render() {
     pushMatrix();
-    translate(position.x,position.y);
+    translate(position.x, position.y);
     rotate(angle);
-    fill(255,0,0);
+    fill(255, 0, 0);
     strokeWeight(5);
-    circle(0,0,5);
+    circle(0, 0, 5);
     popMatrix();
   }
 }

@@ -24,11 +24,6 @@ class Button {
         monsters.add(new Monster(5));
         monsters.add(new Monster(9));
         monsters.add(new Monster(9));
-        
-        
-        //for (int i = 0; i<5; i++) {
-        //  monsters.add(new Monster(int(random(-1, 3))));
-        //}
         for (int i = 0; i<3; i++) {
           powerups.add(new Powerup(int(random(-1, 3))));
         }

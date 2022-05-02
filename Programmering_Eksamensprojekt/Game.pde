@@ -23,9 +23,6 @@ int currentZombieDrawCount;
 int killCounter;
 
 class Game {
-
-
-
   Game() {
     controlScore = new ControlScore();
     controlsButton = new Button(new PVector(750, 521), new PVector(364, 141), 2);
@@ -54,28 +51,25 @@ class Game {
         powerups.add(new Powerup(int(random(-1, 3))));
         drawsSinceLastPowerup=0;
       }
-      if(currentZombieDrawCount>=drawsUntilNextZombieSpawn){
-        if(monsters.size()<30){
+      if (currentZombieDrawCount>=drawsUntilNextZombieSpawn) {
+        if (monsters.size()<30) {
           monsters.add(new Monster(int(random(-1, 10))));
-        monsters.add(new Monster(int(random(-1, 10))));
+          monsters.add(new Monster(int(random(-1, 10))));
+        } else {
+          monsters.remove(0);
+          monsters.add(new Monster(int(random(-1, 10))));
         }
-        else{
-        monsters.remove(0);
-        monsters.add(new Monster(int(random(-1, 10))));
-      }
-        
-        if(drawsUntilNextZombieSpawn>144)drawsUntilNextZombieSpawn-=40;
+
+        if (drawsUntilNextZombieSpawn>144)drawsUntilNextZombieSpawn-=40;
         currentZombieDrawCount=0;
       }
-      
-      
       collisionDetection();
       thePlayer.update();
       for (int i = 0; i < monsters.size(); i++) {
         Monster x = monsters.get(i);
         if (x.life > 0)
           x.update();
-        else{
+        else {
           monsters.remove(i);
           killCounter++;
           println(killCounter);
@@ -121,9 +115,6 @@ class Game {
 
     if (page==1) {
       background(165);
-
-
-
       thePlayer.render();
       for (int i = 0; i < bullets.size(); i++) {
         Bullet n = bullets.get(i);
@@ -153,7 +144,7 @@ class Game {
       controlScore.render();
       textAlign(CENTER);
       text("Dine liv: "+thePlayer.life, width/2, height-50);
-      text("Zombie drab: "+killCounter,width-200,50);
+      text("Zombie drab: "+killCounter, width-200, 50);
       textAlign(CORNER);
     }
 

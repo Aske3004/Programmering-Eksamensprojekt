@@ -1,7 +1,7 @@
-class ControlScore{
-  float highScore,currentScore;
-  
-  ControlScore(){
+class ControlScore {
+  float highScore, currentScore;
+
+  ControlScore() {
     BufferedReader reader = createReader("highscore.txt");
     String line = null;
     try {
@@ -15,8 +15,8 @@ class ControlScore{
       e.printStackTrace();
     }
   }
-  
-  float update(){
+
+  float update() {
     if (frameCount >= 144) {
       currentScore +=1;
       frameCount = 0;
@@ -30,12 +30,11 @@ class ControlScore{
     }
     return currentScore;
   }
-  
-  void render(){
+
+  void render() {
     textSize(30);
     fill(255);
     text("Nuværende score: "+int(currentScore), 15, 90);
     text("HighScore: "+int(highScore), 15, 50);
   }
-  
 }

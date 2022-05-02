@@ -5,20 +5,19 @@ class Monster {
   float size;
 
   Monster(int typeOfMonster) {
-    int chooseHold = int(random(-1,2));
-    int chooseSign = int(random(-1,2));
-    
-    if(chooseHold==0){
-      if(chooseSign==0)position.x=-30;
+    int chooseHold = int(random(-1, 2));
+    int chooseSign = int(random(-1, 2));
+
+    if (chooseHold==0) {
+      if (chooseSign==0)position.x=-30;
       else position.x=width+30;
-      position.y=random(-30,height+30);
-    }
-    else{
-      if(chooseSign==0)position.y=-30;
+      position.y=random(-30, height+30);
+    } else {
+      if (chooseSign==0)position.y=-30;
       else position.y=height+30;
-      position.x=random(-30,width+30);
+      position.x=random(-30, width+30);
     }
-    
+
     if (typeOfMonster==0||typeOfMonster==2||typeOfMonster==3||typeOfMonster==4) {
       type = "normalZombie";
       speed = 0.8;
@@ -34,10 +33,8 @@ class Monster {
     if (typeOfMonster==7||typeOfMonster==8||typeOfMonster==9||typeOfMonster==1) {
       type="fastZombie";
       speed = 3;
-      //speed = 1.4;
       life=1;
       size=50;
-      //size=40;
     }
   }
 
